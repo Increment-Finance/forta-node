@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/forta-network/forta-core-go/protocol"
@@ -70,9 +71,12 @@ func (ac AgentConfig) ContainerName() string {
 		return ac.ID
 	}
 	if ac.IsLocal {
-		return "localhost"
+		return fmt.Sprintf("%s-agent-%s", ContainerNamePrefix, utils.ShortenString(ac.ID, 8))
 	}
-	return "localhost"
+	_, digest := utils.SplitImageRef(ac.Image)
+	return fmt.Sprintf(
+		"%s-agent-%s-%s", ContainerNamePrefix, utils.ShortenString(ac.ID, 8), utils.ShortenString(digest, 4),
+	)
 }
 
 func (ac AgentConfig) GrpcPort() string {
