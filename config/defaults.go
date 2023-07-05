@@ -8,7 +8,7 @@ const (
 	DefaultConfigWrapperKey      = "x-forta-config"
 	DefaultNatsPort              = "4222"
 	DefaultContainerPort         = "8089"
-	DefaultHealthPort            = "8090"
+	DefaultHealthPort            = "8091"
 	DefaultJWTProviderPort       = "8515"
 	DefaultStoragePort           = "8525"
 	DefaultPublicAPIProxyPort    = "8535"
